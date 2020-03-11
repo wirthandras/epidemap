@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EpideMap - Táblázat</title>
+</head>
+<body>
+	<h1>EpideMap - Táblázat</h1>
+	<a href="/">Vissza a főoldalra</a>
+	<table>
+		<caption>Betegségek</caption>
+		<tr>
+			<th>Hely</th>
+			<th>Betegség</th>
+			<th>Mutáció</th>
+			<th>Nem</th>
+		</tr>
+		<tr th:each="d : ${diseases}">
+				<td th:text="${d.place}" >Hely</td>
+				<td th:text="${d.name}" >Betegség</td>
+				<td th:text="${d.mutation}">Mutáció</td>
+				<td th:text="${d.gender}">Nem</td>
+			</tr>
+	</table>
+	<div>
+	<br/>
+	<div>Új betegség rögzítése:</div>
+		<form th:action="@{/adddisease}" th:object="${newdisease}" method="post">
+			<div>Hely: <input id="place" name="place"></div>
+			<div>Betegség: <input id="name" name="name"></div>
+			<div>Mutáció: <input id="mutation" name="mutation"></div>
+			<div>Nem: <input id="gender" name="gender"></div>
+			<button type="submit" name="actionAdd">Hozzáad</button>
+		</form>
+	</div>
+</body>
+</html>
