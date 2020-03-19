@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<meta charset="UTF-8">
-<title>EpideMap - Főoldal</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+    	  $.ajax({
+              method: "GET",
+              url: "/chart"
+          }).done(function(response) {
+        	  console.log(response);
+        	  var array = JSON.parse(response);
+        	  console.log(array);
+        	  var data = google.visualization.arrayToDataTable(array);
+
+                var options = {
+                  chart: {
+                    title: 'Betegségek',
+                    subtitle: 'Számosság',
+                  }
+                };
+
+                var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+                
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+          }); 
+    	  
+    	  
+        
+
+        
+      }
+    </script>
+	<meta charset="UTF-8">
+	<title>EpideMap - Főoldal</title>
 </head>
 <body>
 	<h1>EpideMap</h1>
 	<div>Hello Benedek!</div>
-	<div></div>
 	<a href="/table">A már rögzített betegségek listája</a>
+	<div th:replace="fragments/chart.html :: chart"></div>
 </body>
 </html>
