@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<nav th:replace="fragments/navigation.html :: navigation"></nav>
+	<div class="container">
+		<h3>Új betegség rögzítése:</h3>
+		<form th:action="@{/adddisease}" th:object="${newdisease}"
+			method="post">
+			<div class="form-group row">
+				<label for="place" class="col-sm-2 col-form-label">Hely:</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="place" name="place">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="name" class="col-sm-2 col-form-label">Betegség:</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="name" name="name">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="mutation" class="col-sm-2 col-form-label">Mutáció:</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="mutation" name="mutation">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="gender" class="col-sm-2 col-form-label">Nem:</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="gender" name="gender">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary" name="actionAdd">Hozzáad</button>
+		</form>
+	</div>
+</body>
+</html>

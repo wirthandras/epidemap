@@ -29,6 +29,11 @@ public class IndexController {
 		return "table";
 	}
 	
+	@GetMapping("/create")
+	public String create() {
+		return "create";
+	}
+	
 	@PostMapping(value = "/adddisease")
 	public String newEmployeeSave(@Validated @ModelAttribute("newdisease") Disease e, BindingResult bindingResult) {
 
