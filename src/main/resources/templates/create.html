@@ -16,34 +16,39 @@
 	<nav th:replace="fragments/navigation.html :: navigation"></nav>
 	<div class="container">
 		<h3>Új betegség rögzítése:</h3>
-		<form th:action="@{/create}" th:object="${newdisease}"
-			method="post">
+		<form th:action="@{/create}" th:object="${newdisease}" method="post">
 			<div class="form-group row">
 				<label for="place" class="col-sm-2 col-form-label">Hely:</label>
 				<div class="col-sm-6">
 					<input type="text" class="form-control" th:field="*{place}">
-					<div class="text-danger" th:if="${#fields.hasErrors('place')}" th:errors="*{place}"></div>
+					<div class="text-danger" th:if="${#fields.hasErrors('place')}"
+						th:errors="*{place}"></div>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="name" class="col-sm-2 col-form-label">Betegség:</label>
 				<div class="col-sm-6">
 					<input type="text" class="form-control" th:field="*{name}">
-					<div class="text-danger"  th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+					<div class="text-danger" th:if="${#fields.hasErrors('name')}"
+						th:errors="*{name}"></div>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="mutation" class="col-sm-2 col-form-label">Mutáció:</label>
 				<div class="col-sm-6">
 					<input type="text" class="form-control" th:field="*{mutation}">
-					<div class="text-danger"  th:if="${#fields.hasErrors('mutation')}" th:errors="*{mutation}"></div>
+					<div class="text-danger" th:if="${#fields.hasErrors('mutation')}"
+						th:errors="*{mutation}"></div>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="gender" class="col-sm-2 col-form-label">Nem:</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" th:field="*{gender}">
-					<div class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+					<select class="form-control" th:field="*{gender}" required>
+						<option value="">Válasszon Nemet!</option>
+						<option value="Férfi">Férfi</option>
+						<option value="Nő">Nő</option>
+					</select>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary" name="actionAdd">Hozzáad</button>
