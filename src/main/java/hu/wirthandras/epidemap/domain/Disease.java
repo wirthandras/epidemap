@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Disease {
@@ -12,12 +14,16 @@ public class Disease {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
 	
+	@NotEmpty(message = "Hely kitöltése kötelező")
 	public String place;
 	
+	@NotEmpty(message = "Betegség kitöltése kötelező")
 	public String name;
 	
+	@NotEmpty(message = "Mutáció kitöltése kötelező")
 	public String mutation;
 	
+	@NotEmpty(message = "Nem kitöltése kötelező")
 	public String gender;
 			
 	public  Disease() {

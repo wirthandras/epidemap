@@ -1,5 +1,7 @@
 package hu.wirthandras.epidemap.contoller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,18 +32,18 @@ public class IndexController {
 	}
 	
 	@GetMapping("/create")
-	public String create() {
+	public String create(@ModelAttribute("newdisease") Disease d) {
 		return "create";
 	}
 	
-	@PostMapping(value = "/adddisease")
-	public String newEmployeeSave(@Validated @ModelAttribute("newdisease") Disease e, BindingResult bindingResult) {
+	@PostMapping("/create")
+	public String newEmployeeSave(@Validated @ModelAttribute("newdisease") Disease newdisease, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
-			return "table";
+			return "create";
 		}
 
-		service.save(e);
+		service.save(newdisease);
 		return "redirect:table";
 	}
 }

@@ -16,30 +16,34 @@
 	<nav th:replace="fragments/navigation.html :: navigation"></nav>
 	<div class="container">
 		<h3>Új betegség rögzítése:</h3>
-		<form th:action="@{/adddisease}" th:object="${newdisease}"
+		<form th:action="@{/create}" th:object="${newdisease}"
 			method="post">
 			<div class="form-group row">
 				<label for="place" class="col-sm-2 col-form-label">Hely:</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="place" name="place">
+					<input type="text" class="form-control" th:field="*{place}">
+					<div class="text-danger" th:if="${#fields.hasErrors('place')}" th:errors="*{place}"></div>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="name" class="col-sm-2 col-form-label">Betegség:</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="name" name="name">
+					<input type="text" class="form-control" th:field="*{name}">
+					<div class="text-danger"  th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="mutation" class="col-sm-2 col-form-label">Mutáció:</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="mutation" name="mutation">
+					<input type="text" class="form-control" th:field="*{mutation}">
+					<div class="text-danger"  th:if="${#fields.hasErrors('mutation')}" th:errors="*{mutation}"></div>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="gender" class="col-sm-2 col-form-label">Nem:</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="gender" name="gender">
+					<input type="text" class="form-control" th:field="*{gender}">
+					<div class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary" name="actionAdd">Hozzáad</button>
