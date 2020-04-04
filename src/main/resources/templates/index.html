@@ -47,11 +47,15 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link th:replace="fragments/map.html :: mapcss" />
+<script th:replace="fragments/map.html :: mapscript" ></script>
 <title>EpideMap - Főoldal</title>
 </head>
 <body>
 	<nav th:replace="fragments/navigation.html :: navigation"></nav>
-	<div class="container">
+	<div class="flex-container">
+		<div th:replace="fragments/map.html :: map"></div>
 		<div th:replace="fragments/chart.html :: chart"></div>
 	</div>
 </body>

@@ -28,6 +28,11 @@ public class IndexController {
 		model.addAttribute("diseases", service.getAll());
 		return "table";
 	}
+
+	@GetMapping("/map")
+	public String map() {
+		return "fragments/map";
+	}
 	
 	@GetMapping("/create")
 	public String create(@ModelAttribute("newdisease") Disease d) {
