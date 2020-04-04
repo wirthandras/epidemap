@@ -7,6 +7,28 @@
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+function UpdateStatus() {
+	$.ajax({
+				url : '/api/mapdata/',
+				method : 'POST',
+				dataType : 'json',
+				async : true,
+				cache : false,
+				timeout : 5000,
+				success : function(response) {
+					console.log(response);
+					response.forEach(function(response) {
+						var marker = L.marker([response.lat, response.lng]).addTo(mymap);
+						marker.bindPopup(response.name);
+					});
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+
+				}
+			});
+};
+</script>
+<script type="text/javascript">
 	google.charts.load('current', {
 		'packages' : [ 'bar' ]
 	});
@@ -52,7 +74,7 @@
 <script th:replace="fragments/map.html :: mapscript" ></script>
 <title>EpideMap - Főoldal</title>
 </head>
-<body>
+<body onload="UpdateStatus()">
 	<nav th:replace="fragments/navigation.html :: navigation"></nav>
 	<div class="flex-container">
 		<div th:replace="fragments/map.html :: map"></div>
