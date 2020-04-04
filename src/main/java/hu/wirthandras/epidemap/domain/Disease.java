@@ -11,19 +11,19 @@ public class Disease {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long id;
+	private Long id;
 	
 	@NotEmpty(message = "Hely kitöltése kötelező")
-	public String place;
+	private String place;
 	
 	@NotEmpty(message = "Betegség kitöltése kötelező")
-	public String name;
+	private String name;
 	
 	@NotEmpty(message = "Mutáció kitöltése kötelező")
-	public String mutation;
+	private String mutation;
 	
 	@NotEmpty(message = "Nem kitöltése kötelező")
-	public String gender;
+	private String gender;
 			
 	public  Disease() {
 		

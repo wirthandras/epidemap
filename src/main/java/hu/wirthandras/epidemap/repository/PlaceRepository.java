@@ -6,4 +6,5 @@ import hu.wirthandras.epidemap.domain.Place;
 
 public interface PlaceRepository extends CrudRepository<Place, Long> {
 
+	public Place findByPlace(String place);
 }

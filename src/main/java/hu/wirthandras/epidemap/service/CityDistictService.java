@@ -20,7 +20,7 @@ public class CityDistictService {
 		Set<String> cityNames = new HashSet<>();
 		
 		for(Disease o : diseaseService.getAll()) {
-			cityNames.add(o.place);
+			cityNames.add(o.getPlace());
 		}
 		return new ArrayList<String>(cityNames);
 	}

@@ -20,18 +20,18 @@ public class ChartService {
 		
 		
 		for(Disease d : repository.findAll()) {
-			if(counters.containsKey(d.name)) {
-				Map<String, Integer> mutation = counters.get(d.name);
-				if(mutation.containsKey(d.place)) {
-					mutation.put(d.place, mutation.get(d.place) + 1);
+			if(counters.containsKey(d.getName())) {
+				Map<String, Integer> mutation = counters.get(d.getName());
+				if(mutation.containsKey(d.getPlace())) {
+					mutation.put(d.getPlace(), mutation.get(d.getPlace()) + 1);
 				}
 				else {
-					mutation.put(d.place, 1);
+					mutation.put(d.getPlace(), 1);
 				}
 			} else {
 				Map<String, Integer> mutation = new HashMap<>();
-				mutation.put(d.place, 1);
-				counters.put(d.name, mutation);
+				mutation.put(d.getPlace(), 1);
+				counters.put(d.getName(), mutation);
 			}
 		}
 		
